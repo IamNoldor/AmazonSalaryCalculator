@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 25px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background: black;
+    color: white;
+}
+
+#salCalc {
+    background: #121212;
+    border: 3px solid #dd1818;
+    padding: 30px 20px;
+    border-radius: 30px;
+    width: 710px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .2s;
+    overflow: hidden;
+}
+
+.formTitle {
+    text-align: center;
+}
+
+.formHead {
+    padding-bottom: 15px;
+    border-bottom: 2px solid white;
+}
+.formBody {
+    padding-bottom: 30px;
+    border-bottom: 2px solid white;
+}
+.formBodyRow {
+    height: 45px;
+    transition: .2s;
+}
+.formBodyRow,
+.formAddButton,
+.formBottom {
+    display: flex;
+    margin-top: 25px;
+    justify-content: center;
+    font-size: 25px;
+    align-items: center;
+}
+
+.formBottom {
+    justify-content: space-around;
+}
+.salaryBlock {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.formAddButton div:first-child span {
+    position: relative;
+    top: 34%;
+    right: -15%;
+    font-size: 30px;
+}
+.formAddButton div:last-child span {
+    position: relative;
+    top: 34%;
+    left: 19%;
+    font-size: 30px;
+}
+
+.formAddButton div {
+    width: 15%;
+    height: 100px;
+}
+
+#addButton {
+    width: 100%;
+    height: 100%;
+    font-size: 200%;
+    border-radius: 50%;
+    opacity: 50%;
+    background: gray;
+    color: white;
+    transition: .3s;
+}
+
+#addButton:hover {
+    opacity: 1;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.formBodyRow {
+    justify-content: space-between;
+}
+
+.formBodyRow div:nth-child(1),
+.formBodyRow div:nth-child(1),
+.formBodyRow div:nth-child(1) {
+    width: 55%;
+
+}
+
+.formBodyRow div:nth-child(2),
+.formBodyRow div:nth-child(2),
+.formBodyRow div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+
+.deleteIcon {
+    width: 30px;
+    height: 30px;
+    background-color: gray;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 27px;
+    transform: rotate(45grad);
+    transition: .3s;
+    opacity: 50%;
+}
+
+.deleteIcon:hover {
+    background-color: white;
+    color: red;
+    transform: rotate(415deg);
+    cursor: pointer;
+    opacity: 100%;
+}
+.blocked:hover {
+    color: gray;
+}
+
+.formBodyInput {
+    font-size: 25px;
+    background: transparent;
+    color: white;
+    border: none;
+    border-bottom: 2px solid #f6e9e9;
+    width: 75%;
+    transition: .5s;
+    text-align: center;
+}
+
+.formBodyInput:active,
+.formBodyInput:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.formBodyInput:hover {
+    border-bottom: 2px solid red;
+}
+
+.formBodyInput:active {
+    border-bottom: 2px solid #f6a3a3;
+}
+
+#sub {
+    background-color: transparent;
+    color: white;
+    border-radius: 15px;
+    font-size: 25px;
+    padding: 10px 15px;
+    border: 2px solid red;
+    transition: .5s;
+}
+
+#sub:hover {
+    border: 2px solid white;
+    color: red;
+    cursor: pointer;
+}
+
+#salary {
+    display: flex;
+    margin-left: 20px;
+    overflow: hidden;
+    height: 10%;
+}
+
+#salary div {
+    transition: 1s;
+    margin-left: 3px;
+    height: 26px;
+}
+
+#num1,
+#num2,
+#num3,
+#num4,
+#num5,
+#num6 {
+    transform: translateY(-900%);
+}
+
+#addForm {
+    top: -100%;
+    position: absolute;
+    width: 390px;
+    background-color: #121212;
+    border: 2px solid red;
+    padding: 30px 20px;
+    border-radius: 30px;
+    height: 350px;
+    transition: .3s;
+    transform: translate(-50%, -50%);
+}
+
+#addForm .formHead {
+    border-bottom: 2px solid white;
+}
+
+#addForm .formBody {
+    margin-top: 20px;
+    border-bottom: 2px solid white;
+    padding-bottom: 20px;
+}
+
+.addRo,
+.addNso,
+.addShw {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addNso,
+.addShw {
+    margin-top: 15px;
+}
+
+#addRo,
+#addNso,
+#addShw {
+    width: 20px;
+    height: 20px;
+    accent-color: #121212;
+    color: white;
+}
+
+#addForm .formBottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.formBottom button {
+    background-color: transparent;
+    color: white;
+    border-radius: 15px;
+    font-size: 25px;
+    padding: 10px 15px;
+    border: 2px solid red;
+    transition: .5s;
+}
+.formBottom button:hover {
+    border: 2px solid white;
+    color: red;
+    font-size: 26px;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+</head>
+<body>
+<div class="formSection">
+    <form id="salCalc" name="salCalc">
+        <div class="formHead">
+            <div class="formTitle">
+                <h1>Salary Calculator</h1>
+            </div>
+        </div>
+        <div class="formBody">
+            <div class="rhw formBodyRow">
+                <div>
+                    <label for="rhw">PL Regular Hours Worked</label>
+                </div>
+                <div>
+                    <input class="formBodyInput" id="rhw" type="text" placeholder="Enter your hours">
+                </div>
+                <div class="deleteIcon blocked">
+                    <span>+</span>
+                </div>
+            </div>
+            <div class="nshw formBodyRow">
+                <div>
+                    <label for="nshw">PL Night Shift Hours Worked</label>
+                </div>
+                <div>
+                    <input class="formBodyInput" id="nshw" type="text" placeholder="Enter your hours">
+                </div>
+                <div class="deleteIcon blocked">
+                    <span>+</span>
+                </div>
+            </div>
+        </div>
+        <div class="formAddButton">
+            <div>
+                <span>ADD</span>
+            </div>
+            <div>
+                <button id="addButton" type="button" onclick="showExtraHours()">+</button>
+            </div>
+            <div>
+                <span>HOURS</span>
+            </div>
+        </div>
+        <div class="formBottom">
+            <div class="formButton">
+                <div>
+                    <button id="sub" type="button" onclick="calculate()">Calculate</button>
+                </div>
+            </div>
+            <div class="salaryBlock">
+                <div>
+                    <span>Your Salary:</span>
+                </div>
+                <div id="salary">
+                    <div id="num1">
+                        <div>9</div>
+                        <div>8</div>
+                        <div>7</div>
+                        <div>6</div>
+                        <div>5</div>
+                        <div>4</div>
+                        <div>3</div>
+                        <div>2</div>
+                        <div>1</div>
+                        <div>0</div>
+                    </div>
+                    <div id="num2">
+                        <div>9</div>
+                        <div>8</div>
+                        <div>7</div>
+                        <div>6</div>
+                        <div>5</div>
+                        <div>4</div>
+                        <div>3</div>
+                        <div>2</div>
+                        <div>1</div>
+                        <div>0</div>
+                    </div>
+                    <div id="num3">
+                        <div>9</div>
+                        <div>8</div>
+                        <div>7</div>
+                        <div>6</div>
+                        <div>5</div>
+                        <div>4</div>
+                        <div>3</div>
+                        <div>2</div>
+                        <div>1</div>
+                        <div>0</div>
+                    </div>
+                    <div id="num4">
+                        <div>9</div>
+                        <div>8</div>
+                        <div>7</div>
+                        <div>6</div>
+                        <div>5</div>
+                        <div>4</div>
+                        <div>3</div>
+                        <div>2</div>
+                        <div>1</div>
+                        <div>0</div>
+                    </div>
+                    <div>
+                        <span>,</span>
+                    </div>
+                    <div id="num5">
+                        <div>9</div>
+                        <div>8</div>
+                        <div>7</div>
+                        <div>6</div>
+                        <div>5</div>
+                        <div>4</div>
+                        <div>3</div>
+                        <div>2</div>
+                        <div>1</div>
+                        <div>0</div>
+                    </div>
+                    <div id="num6">
+                        <div>9</div>
+                        <div>8</div>
+                        <div>7</div>
+                        <div>6</div>
+                        <div>5</div>
+                        <div>4</div>
+                        <div>3</div>
+                        <div>2</div>
+                        <div>1</div>
+                        <div>0</div>
+                    </div>
+                    <div>
+                        <span>zł.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<form id="addForm">
+    <div class="formHead">
+        <div class="formTitle">
+            <h1>Add Extra Hours</h1>
+        </div>
+    </div>
+    <div class="formBody">
+        <div class="addRo">
+            <div>
+                <label for="addRo">PL Regular Overtime</label>
+            </div>
+            <div>
+                <input class="addCheckBox" id="addRo" type="checkbox" value="ro">
+            </div>
+        </div>
+        <div class="addNso">
+            <div>
+                <label for="addNso">PL Night Shift Overtime</label>
+            </div>
+            <div>
+                <input class="addCheckBox" id="addNso" type="checkbox" value="nso">
+            </div>
+        </div>
+        <div class="addShw">
+            <div>
+                <label for="addShw">PL Sunday Hours Worked</label>
+            </div>
+            <div>
+                <input class="addCheckBox" id="addShw" type="checkbox" value="shw">
+            </div>
+        </div>
+    </div>
+    <div class="formBottom">
+        <div>
+            <button type="button" onclick="hideExtraHours()">Cansel</button>
+        </div>
+        <div>
+            <button type="button" onclick="add()">Add</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
