@@ -20,7 +20,7 @@
                     <label for="rhw">PL Regular Hours Worked</label>
                 </div>
                 <div>
-                    <input class="formBodyInput" id="rhw" type="text" placeholder="Enter your hours">
+                    <input class="formBodyInput" id="rhw" type="number" placeholder="Enter your hours">
                 </div>
                 <div class="deleteIcon blocked">
                     <span>+</span>
@@ -31,7 +31,7 @@
                     <label for="nshw">PL Night Shift Hours Worked</label>
                 </div>
                 <div>
-                    <input class="formBodyInput" id="nshw" type="text" placeholder="Enter your hours">
+                    <input class="formBodyInput" id="nshw" type="number" placeholder="Enter your hours">
                 </div>
                 <div class="deleteIcon blocked">
                     <span>+</span>
@@ -52,7 +52,7 @@
         <div class="formBottom">
             <div class="formButton">
                 <div>
-                    <button id="sub" type="button" onclick="calculate()">Calculate</button>
+                    <button id="reset" type="button" onclick="resetRows()">Reset</button>
                 </div>
             </div>
             <div class="salaryBlock">
@@ -140,6 +140,11 @@
                     </div>
                 </div>
             </div>
+            <div class="formButton">
+                <div>
+                    <button id="sub" type="button" onclick="showAgeForm()">Calculate</button>
+                </div>
+            </div>
         </div>
     </form>
 </div>
@@ -181,6 +186,21 @@
         </div>
         <div>
             <button type="button" onclick="add()">Add</button>
+        </div>
+    </div>
+</form>
+<form id="ageForm">
+    <div class="formHead">
+        <div class="formTitle">
+            <h1>Are you 26 years old or older?</h1>
+        </div>
+    </div>
+    <div class="formBottom">
+        <div>
+            <button type="button" onclick="hideAgeForm('no')">No</button>
+        </div>
+        <div>
+            <button type="button" onclick="hideAgeForm('yes')">Yes</button>
         </div>
     </div>
 </form>

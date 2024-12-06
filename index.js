@@ -11,12 +11,13 @@ let extraHours = ["PL Regular Overtime", "PL Night Shift Overtime", "PL Sunday H
 let extraHoursShort = ["ro", "nso", "shw"]
 let activeHours = [];
 
-function calculate() {
+function calculate(answer) {
     let ro = 0
     let nso = 0
     let shw = 0
     let rhw = document.getElementById("rhw").value;
     let nshw = document.getElementById("nshw").value;
+
 
     let existHours = ifExist()
     if (existHours) {
@@ -33,8 +34,16 @@ function calculate() {
         }
     }
 
-    let salaryBrutto = ((PL_RHW * rhw + PL_NSHW * nshw + PL_RO * ro + PL_NSO * nso + PL_SHW * shw) * BRUTTO);
-    let salaryNetto = salaryBrutto - (salaryBrutto * 0.20);
+    let salaryBrutto = (((
+        PL_RHW * (typeof parseInt(rhw) !== "number" ? 0 : rhw) +
+        PL_NSHW * (typeof parseInt(nshw) !== "number" ? 0 : nshw) +
+        PL_RO * (typeof parseInt(ro) !== "number" ? 0 : ro) +
+        PL_NSO * (typeof parseInt(nso) !== "number" ? 0 : nso) +
+        PL_SHW * (typeof parseInt(shw) !== "number" ? 0 : shw))
+        * BRUTTO))
+    console.log(typeof parseInt(rhw))
+    console.log(typeof parseInt(nshw))
+    let salaryNetto = salaryBrutto - (salaryBrutto * (answer === "yes" ? 0.32 : 0.21));
     let arrayNum = decade(salaryNetto.toFixed(2));
     rotate(arrayNum)
 }
@@ -100,6 +109,24 @@ function hideExtraHours() {
     extraHoursBlock.style.top = "-100%"
 }
 
+function showAgeForm() {
+    let ageForm = document.getElementById("ageForm");
+    let salCalc = document.getElementById("salCalc")
+    salCalc.style.top = "200%"
+    ageForm.style.top = "50%"
+    ageForm.style.left = "50%"
+}
+
+function hideAgeForm(answer) {
+    let salCalc = document.getElementById("salCalc")
+    salCalc.style.top = "50%"
+    let ageForm = document.getElementById("ageForm");
+    ageForm.style.top = "-100%"
+    setTimeout(function () {
+        calculate(answer)
+    }, 400);
+}
+
 function add() {
     let checkBoxArr = document.getElementsByClassName("addCheckBox")
     for (let i = 0; i < checkBoxArr.length; i++) {
@@ -125,7 +152,7 @@ function add() {
             label.setAttribute("for", extraHoursShort[i]);
             label.textContent = extraHours[i];
             let input = document.createElement("input");
-            input.setAttribute("type", "text");
+            input.setAttribute("type", "number");
             input.setAttribute("id", extraHoursShort[i]);
             input.setAttribute("placeholder", "Enter your hours");
             input.classList.add("formBodyInput")
@@ -163,4 +190,31 @@ function deleteRow(rowName) {
     }
 }
 
+function resetRows() {
+    document.getElementById("rhw").value = ""
+    document.getElementById("nshw").value = ""
+    if (activeHours[0] && activeHours[0] !== undefined) {
+        for (let i = 0; i < activeHours.length; i++) {
+            if (activeHours[i] === "ro") {
+                document.getElementById("ro").value = ""
+            }
+            if (activeHours[i] === "nso") {
+                document.getElementById("nso").value = ""
+            }
+            if (activeHours[i] === "shw") {
+                document.getElementById("shw").value = ""
+            }
+        }
+    }
+    resetNums()
+}
+
+function resetNums() {
+    for (let i = 0; i < 6; i++) {
+        let count = "num" + (i + 1);
+        let num = document.getElementById(count)
+        num.style.transform = "translateY(-900%)"
+    }
+    transform = [0, 0, 0, 0, 0, 0];
+}
 
