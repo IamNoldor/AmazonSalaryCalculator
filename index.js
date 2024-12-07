@@ -4,12 +4,16 @@ const PL_SHW = 2;
 const PL_RHW = 1;
 const PL_NSHW = 1.2;
 const BRUTTO = 29.50;
+const YUONG_TAX = 0.21
+const OLD_TAX = 0.32
 const STEP = -100;
 
 let transform = [0, 0, 0, 0, 0, 0];
 let extraHours = ["PL Regular Overtime", "PL Night Shift Overtime", "PL Sunday Hours Worked"];
 let extraHoursShort = ["ro", "nso", "shw"]
 let activeHours = [];
+let currentPageStyle = true
+let currentLang = "eng"
 
 function calculate(answer) {
     let ro = 0
@@ -35,15 +39,15 @@ function calculate(answer) {
     }
 
     let salaryBrutto = (((
-        PL_RHW * (typeof parseInt(rhw) !== "number" ? 0 : rhw) +
-        PL_NSHW * (typeof parseInt(nshw) !== "number" ? 0 : nshw) +
-        PL_RO * (typeof parseInt(ro) !== "number" ? 0 : ro) +
-        PL_NSO * (typeof parseInt(nso) !== "number" ? 0 : nso) +
-        PL_SHW * (typeof parseInt(shw) !== "number" ? 0 : shw))
+            PL_RHW * (typeof parseInt(rhw) !== "number" ? 0 : rhw) +
+            PL_NSHW * (typeof parseInt(nshw) !== "number" ? 0 : nshw) +
+            PL_RO * (typeof parseInt(ro) !== "number" ? 0 : ro) +
+            PL_NSO * (typeof parseInt(nso) !== "number" ? 0 : nso) +
+            PL_SHW * (typeof parseInt(shw) !== "number" ? 0 : shw))
         * BRUTTO))
     console.log(typeof parseInt(rhw))
     console.log(typeof parseInt(nshw))
-    let salaryNetto = salaryBrutto - (salaryBrutto * (answer === "yes" ? 0.32 : 0.21));
+    let salaryNetto = salaryBrutto - (salaryBrutto * (answer === "yes" ? OLD_TAX : YUONG_TAX));
     let arrayNum = decade(salaryNetto.toFixed(2));
     rotate(arrayNum)
 }
@@ -138,24 +142,37 @@ function add() {
         }
         if (checkBoxArr[i].checked && value !== i) {
             let formBody = document.getElementsByClassName("formBody")[0];
+
             let formBodyRow = document.createElement("div");
             formBodyRow.classList.add(extraHoursShort[i]);
             formBodyRow.classList.add("formBodyRow")
+
             let div1 = document.createElement("div");
             let div2 = document.createElement("div");
+
             let div3 = document.createElement("div");
             div3.classList.add("deleteIcon");
             div3.setAttribute("onclick", ("deleteRow('" + checkBoxArr[i].value + "')"))
+
             let span = document.createElement("span");
             span.textContent = "+"
+
             let label = document.createElement("label");
             label.setAttribute("for", extraHoursShort[i]);
-            label.textContent = extraHours[i];
+            label.classList.add("lng")
+            let atr= extraHoursShort[i] === "ro" ? "4" : extraHoursShort[i] === "nso" ? "5" : extraHoursShort[i] === "shw" ? "6" : false
+            label.setAttribute("data-key", atr)
+
+            label.textContent = extraHoursShort[i] === "ro" ? LANGUAGES["4"][currentLang] : extraHoursShort[i] === "nso" ? LANGUAGES["5"][currentLang] : extraHoursShort[i] === "shw" ? LANGUAGES["6"][currentLang] : false;
+
             let input = document.createElement("input");
             input.setAttribute("type", "number");
             input.setAttribute("id", extraHoursShort[i]);
-            input.setAttribute("placeholder", "Enter your hours");
+            atr = LANGUAGES["7"][currentLang]
+            input.setAttribute("placeholder", atr);
+            input.setAttribute("data-key", "7")
             input.classList.add("formBodyInput")
+            input.classList.add("lng")
 
             div1.appendChild(label);
             div2.appendChild(input);
@@ -164,6 +181,7 @@ function add() {
             formBodyRow.appendChild(div2)
             formBodyRow.appendChild(div3)
             formBody.appendChild(formBodyRow)
+
             activeHours.push(checkBoxArr[i].value);
         }
     }
@@ -218,3 +236,42 @@ function resetNums() {
     transform = [0, 0, 0, 0, 0, 0];
 }
 
+function changeState() {
+    currentPageStyle = currentPageStyle ? false : true;
+    console.log(currentPageStyle);
+    changePageStyle(currentPageStyle)
+}
+
+function changePageStyle(mode) {
+    let btnWrapper = document.getElementsByClassName("btnWrapper")[0];
+    if (mode) {
+        btnWrapper.classList.remove("checked")
+    } else {
+        btnWrapper.classList.add("checked")
+    }
+}
+
+function delLngClases(element) {
+    element.classList.remove("rus");
+    element.classList.remove("eng");
+    element.classList.remove("pln");
+}
+
+let lngSelect = document.getElementById("lng")
+lngSelect.addEventListener("change", function (e) {
+    let elements = document.getElementsByClassName("lng")
+    currentLang = lngSelect.value
+    for (let el of elements) {
+        if (el.dataset.key !== "7") {
+            el.innerHTML = LANGUAGES[el.dataset.key][currentLang]
+            delLngClases(el)
+            el.classList.add(currentLang)
+            delLngClases(document.getElementById("addForm"))
+            document.getElementById("addForm").classList.add(currentLang)
+            delLngClases(document.getElementById("salCalc"))
+            document.getElementById("salCalc").classList.add(currentLang)
+        } else {
+            el.setAttribute("placeholder", LANGUAGES[el.dataset.key][currentLang])
+        }
+    }
+})
