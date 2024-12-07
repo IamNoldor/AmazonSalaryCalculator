@@ -318,11 +318,10 @@ body {
 #addForm {
     height: 350px;
 }
-#addForm.rus {
-    width: 425px;
-}
-#addForm.pln {
+#addForm.rus,
+#addForm.pln{
     width: 470px;
+    height: 3650px;
 }
 
 #addForm .formHead,
