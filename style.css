@@ -314,13 +314,17 @@ body {
     transition: .3s;
     transform: translate(-50%, -50%);
 }
+.rus,
+.pln {
+    font-size: 22px;
+}
 
 #addForm {
     height: 350px;
 }
 #addForm.rus,
 #addForm.pln{
-    width: 470px;
+    width: 510px;
     height: 365px;
 }
 
