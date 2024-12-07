@@ -33,8 +33,9 @@ body {
     transition: .2s;
     overflow: hidden;
 }
-#salCalc.pln {
-    width: 760px;
+#salCalc.pln,
+#salCalc.rus {
+    width: 850px;
 }
 .formHead {
     padding-bottom: 15px;
@@ -131,6 +132,10 @@ body {
     transform: translateX(1.46em);
     background-color: #121212;
     top: 1px;
+}
+#salCalc.pln #mode:checked + .slider:before,
+#salCalc.rus #mode:checked + .slider:before {
+    transform: translateX(2.1em);
 }
 
 .formBody {
