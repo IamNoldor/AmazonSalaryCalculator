@@ -16,6 +16,7 @@ body {
     color: white;
     height: 100vh;
 }
+
 .formSection {
     height: 100vh;
 }
@@ -33,10 +34,12 @@ body {
     transition: .2s;
     overflow: hidden;
 }
+
 #salCalc.pln,
 #salCalc.rus {
     width: 850px;
 }
+
 .formHead {
     padding-bottom: 15px;
     border-bottom: 2px solid white;
@@ -49,14 +52,17 @@ body {
     width: 15%;
     margin-left: 10px;
 }
+
 #lng {
     font-size: 20px;
     background-color: transparent;
     color: white;
 }
+
 #lng:hover {
     cursor: pointer;
 }
+
 #lng option {
     background-color: #121212;
     font-size: 20px;
@@ -67,6 +73,7 @@ body {
     display: flex;
     justify-content: center;
 }
+
 #addForm .formTitle {
     width: 100%;
     text-align: center;
@@ -77,20 +84,24 @@ body {
     display: flex;
     justify-content: right;
 }
+
 .btnWrapper {
     width: 60%;
 }
+
 .switch {
     position: relative;
     display: inline-block;
     width: 60%;
     height: 29px;
 }
+
 .switch #mode {
     opacity: 1;
     width: 0;
     height: 0;
 }
+
 .slider {
     position: absolute;
     cursor: pointer;
@@ -103,6 +114,7 @@ body {
     border-radius: 30px;
     border: 1px solid #ccc;
 }
+
 .slider:before {
     font-weight: 900;
     position: absolute;
@@ -110,7 +122,7 @@ body {
     font-size: 20px;
     color: black;
     text-align: center;
-    height:25px;
+    height: 25px;
     width: 25px;
     border-radius: 16px;
     left: 2px;
@@ -119,6 +131,7 @@ body {
     background-color: white;
     transition: .4s;
 }
+
 #mode:checked + .slider {
     background-color: #ffffff;
     border: 1px solid black;
@@ -133,6 +146,7 @@ body {
     background-color: #121212;
     top: 1px;
 }
+
 #salCalc.pln #mode:checked + .slider:before,
 #salCalc.rus #mode:checked + .slider:before {
     transform: translateX(2.1em);
@@ -166,11 +180,13 @@ body {
     justify-content: right;
     align-items: center;
 }
+
 .formAddButton {
     margin-top: 20px;
     margin-bottom: 75px;
 }
-.formAddButton div{
+
+.formAddButton div {
     position: relative;
     padding-top: 30px;
     width: 100%;
@@ -319,6 +335,15 @@ body {
     transition: .3s;
     transform: translate(-50%, -50%);
 }
+
+#ageForm {
+    width: 450px;
+}
+
+#ageForm .formHead {
+    justify-content: center;
+}
+
 .rus,
 .pln {
     font-size: 22px;
@@ -327,8 +352,9 @@ body {
 #addForm {
     height: 350px;
 }
+
 #addForm.rus,
-#addForm.pln{
+#addForm.pln {
     width: 510px;
     height: 365px;
 }
@@ -351,6 +377,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .addRo div:nth-child(2),
 .addNso div:nth-child(2),
 .addShw div:nth-child(2) {
@@ -396,3 +423,17 @@ body {
     color: red;
     cursor: pointer;
 }
+
+
+
+/*@media (min-width: 960px) {*/
+/*    body {*/
+/*        background: white;*/
+/*    }*/
+/*}*/
+/*@media (min-width: 1200px) {*/
+/*    body {*/
+/*        background: yellow;*/
+/*    }*/
+/*}*/
+

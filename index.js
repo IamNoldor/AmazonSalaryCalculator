@@ -15,7 +15,7 @@ let activeHours = [];
 let currentPageStyle = true
 let currentLang = "eng"
 
-function calculate(answer) {
+function calculate(answer = 0) {
     let ro = 0
     let nso = 0
     let shw = 0
@@ -37,19 +37,23 @@ function calculate(answer) {
             }
         }
     }
-
-    let salaryBrutto = (((
-            PL_RHW * (typeof parseInt(rhw) !== "number" ? 0 : rhw) +
-            PL_NSHW * (typeof parseInt(nshw) !== "number" ? 0 : nshw) +
-            PL_RO * (typeof parseInt(ro) !== "number" ? 0 : ro) +
-            PL_NSO * (typeof parseInt(nso) !== "number" ? 0 : nso) +
-            PL_SHW * (typeof parseInt(shw) !== "number" ? 0 : shw))
-        * BRUTTO))
-    console.log(typeof parseInt(rhw))
-    console.log(typeof parseInt(nshw))
-    let salaryNetto = salaryBrutto - (salaryBrutto * (answer === "yes" ? OLD_TAX : YUONG_TAX));
-    let arrayNum = decade(salaryNetto.toFixed(2));
-    rotate(arrayNum)
+    if (ro + nso + shw + rhw + nshw <= 0) {
+        return false;
+    } else if (answer === 0) return true
+    if (answer !== 0) {
+        let salaryBrutto = (((
+                PL_RHW * (typeof parseInt(rhw) !== "number" ? 0 : rhw) +
+                PL_NSHW * (typeof parseInt(nshw) !== "number" ? 0 : nshw) +
+                PL_RO * (typeof parseInt(ro) !== "number" ? 0 : ro) +
+                PL_NSO * (typeof parseInt(nso) !== "number" ? 0 : nso) +
+                PL_SHW * (typeof parseInt(shw) !== "number" ? 0 : shw))
+            * BRUTTO))
+        console.log(typeof parseInt(rhw))
+        console.log(typeof parseInt(nshw))
+        let salaryNetto = salaryBrutto - (salaryBrutto * (answer === "yes" ? OLD_TAX : YUONG_TAX));
+        let arrayNum = decade(salaryNetto.toFixed(2));
+        rotate(arrayNum)
+    }
 }
 
 function ifExist() {
@@ -114,11 +118,13 @@ function hideExtraHours() {
 }
 
 function showAgeForm() {
-    let ageForm = document.getElementById("ageForm");
-    let salCalc = document.getElementById("salCalc")
-    salCalc.style.top = "200%"
-    ageForm.style.top = "50%"
-    ageForm.style.left = "50%"
+    if (calculate()) {
+        let ageForm = document.getElementById("ageForm");
+        let salCalc = document.getElementById("salCalc")
+        salCalc.style.top = "200%"
+        ageForm.style.top = "50%"
+        ageForm.style.left = "50%"
+    }
 }
 
 function hideAgeForm(answer) {
@@ -160,7 +166,7 @@ function add() {
             let label = document.createElement("label");
             label.setAttribute("for", extraHoursShort[i]);
             label.classList.add("lng")
-            let atr= extraHoursShort[i] === "ro" ? "4" : extraHoursShort[i] === "nso" ? "5" : extraHoursShort[i] === "shw" ? "6" : false
+            let atr = extraHoursShort[i] === "ro" ? "4" : extraHoursShort[i] === "nso" ? "5" : extraHoursShort[i] === "shw" ? "6" : false
             label.setAttribute("data-key", atr)
 
             label.textContent = extraHoursShort[i] === "ro" ? LANGUAGES["4"][currentLang] : extraHoursShort[i] === "nso" ? LANGUAGES["5"][currentLang] : extraHoursShort[i] === "shw" ? LANGUAGES["6"][currentLang] : false;
