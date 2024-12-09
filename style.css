@@ -224,15 +224,10 @@ body {
     justify-content: space-between;
 }
 
-.formBodyRow div:nth-child(1),
-.formBodyRow div:nth-child(1),
 .formBodyRow div:nth-child(1) {
     width: 55%;
-
 }
 
-.formBodyRow div:nth-child(2),
-.formBodyRow div:nth-child(2),
 .formBodyRow div:nth-child(2) {
     display: flex;
     justify-content: center;
@@ -429,9 +424,44 @@ body {
     cursor: pointer;
 }
 
-/*@media (min-width: 960px) {*/
-/*    body {*/
-/*        background: white;*/
+/*@media (max-width: 720px) {*/
+/*    .formBodyRow {*/
+/*        display: block;*/
+/*    }*/
+/*    .formBodyRow div:nth-child(1) {*/
+/*        width: 100%;*/
+/*        display: flex;*/
+/*        justify-content: center;*/
+/*        align-items: center;*/
+/*    }*/
+/*    .formBodyRow div:nth-child(2) {*/
+/*        width: 100%;*/
+/*    }*/
+/*    #salCalc {*/
+/*        width: 400px;*/
+/*        height: auto;*/
+/*    }*/
+/*    * {*/
+/*        font-size: 20px;*/
+/*    }*/
+/*    .formAddButton {*/
+/*        margin: 0;*/
+/*    }*/
+/*    .dlModeBtn {*/
+/*        position: relative;*/
+/*        color: white;*/
+/*        right: -8px;*/
+/*        top: -13px;*/
+/*        width: 30%;*/
+/*    }*/
+/*    .lngOption {*/
+/*        position: relative;*/
+/*        top: -13px;*/
+/*        left: -8px;*/
+/*        width: auto;*/
+/*    }*/
+/*    .formTitle {*/
+/*        margin-top: 33px;*/
 /*    }*/
 /*}*/
 /*@media (min-width: 1200px) {*/

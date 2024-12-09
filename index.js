@@ -9,7 +9,6 @@ const OLD_TAX = 0.32
 const STEP = -100;
 
 let transform = [0, 0, 0, 0, 0, 0];
-let extraHours = ["PL Regular Overtime", "PL Night Shift Overtime", "PL Sunday Hours Worked"];
 let extraHoursShort = ["ro", "nso", "shw"]
 let activeHours = [];
 let currentPageStyle = true
@@ -49,9 +48,8 @@ function calculate(answer = 0) {
                 PL_NSO * (typeof parseInt(nso) !== "number" ? 0 : nso) +
                 PL_SHW * (typeof parseInt(shw) !== "number" ? 0 : shw))
             * BRUTTO))
-        console.log(typeof parseInt(rhw))
-        console.log(typeof parseInt(nshw))
         let salaryNetto = salaryBrutto - (salaryBrutto * (answer === "yes" ? OLD_TAX : YUONG_TAX));
+        console.log(salaryNetto)
         let arrayNum = decade(salaryNetto.toFixed(2));
         rotate(arrayNum)
     }
@@ -85,11 +83,11 @@ function decade(num) {
     let num3 = (money % 100 - money % 10) / 10;
     let num2 = (money % 1000 - money % 100) / 100;
     let num1 = (money % 10000 - money % 1000) / 1000;
+    // console.log(parseInt(num1), parseInt(num2), parseInt(num3), parseInt(num4), parseInt(num5), parseInt(num6))
     return [parseInt(num1), parseInt(num2), parseInt(num3), parseInt(num4), parseInt(num5), parseInt(num6)];
 }
 
 function rotate(array) {
-
     for (let i = 0; i < array.length; i++) {
         let count = "num" + (i + 1);
         let num = document.getElementById(count)
