@@ -7,6 +7,7 @@ const BRUTTO = 29.50;
 const YUONG_TAX = 0.21
 const OLD_TAX = 0.32
 const STEP = -100;
+const PREMIA = 0.15
 
 let transform = [0, 0, 0, 0, 0, 0];
 let extraHoursShort = ["ro", "nso", "shw"]
@@ -49,7 +50,7 @@ function calculate(answer = 0) {
                 PL_SHW * (typeof parseInt(shw) !== "number" ? 0 : shw))
             * BRUTTO))
         let salaryNetto = salaryBrutto - (salaryBrutto * (answer === "yes" ? OLD_TAX : YUONG_TAX));
-        console.log(salaryNetto)
+        salaryNetto = salaryNetto + (salaryNetto * PREMIA)
         let arrayNum = decade(salaryNetto.toFixed(2));
         rotate(arrayNum)
     }
@@ -83,7 +84,6 @@ function decade(num) {
     let num3 = (money % 100 - money % 10) / 10;
     let num2 = (money % 1000 - money % 100) / 100;
     let num1 = (money % 10000 - money % 1000) / 1000;
-    // console.log(parseInt(num1), parseInt(num2), parseInt(num3), parseInt(num4), parseInt(num5), parseInt(num6))
     return [parseInt(num1), parseInt(num2), parseInt(num3), parseInt(num4), parseInt(num5), parseInt(num6)];
 }
 
@@ -250,7 +250,6 @@ function resetNums() {
 
 function changeState() {
     currentPageStyle = currentPageStyle ? false : true;
-    console.log(currentPageStyle);
     changePageStyle(currentPageStyle)
 }
 
