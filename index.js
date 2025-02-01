@@ -50,7 +50,6 @@ function calculate(answer = 0) {
                 PL_SHW * (typeof parseInt(shw) !== "number" ? 0 : shw))
             * BRUTTO))
         let salaryNetto = salaryBrutto - (salaryBrutto * (answer === "yes" ? OLD_TAX : YUONG_TAX));
-        salaryNetto = salaryNetto + (salaryNetto * PREMIA)
         let arrayNum = decade(salaryNetto.toFixed(2));
         rotate(arrayNum)
     }
