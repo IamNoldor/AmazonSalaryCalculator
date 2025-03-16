@@ -50,6 +50,28 @@
                     <span>+</span>
                 </div>
             </div>
+            <div class="sickness formBodyRow">
+                <div>
+                    <label class="lng" for="sickness" data-key = "19">L4 Sickness</label>
+                </div>
+                <div>
+                    <input class="formBodyInput lng" id="sickness" type="number" data-key = "7" placeholder="Enter your hours">
+                </div>
+                <div class="deleteIcon blocked">
+                    <span>+</span>
+                </div>
+            </div>
+            <div class="emergencyLeave formBodyRow">
+                <div>
+                    <label class="lng" for="emergencyLeave" data-key = "20">Emergency Leave</label>
+                </div>
+                <div>
+                    <input class="formBodyInput lng" id="emergencyLeave" type="number" data-key = "7" placeholder="Enter your hours">
+                </div>
+                <div class="deleteIcon blocked">
+                    <span>+</span>
+                </div>
+            </div>
         </div>
         <div class="formAddButton">
             <div>
@@ -150,7 +172,7 @@
             </div>
             <div class="formButton">
                 <div>
-                    <button class="lng" data-key = "13" id="sub" type="button" onclick="showAgeForm()">Calculate</button>
+                    <button class="lng" data-key = "13" id="sub" type="button" onclick="showBonusForm()">Calculate</button>
                 </div>
             </div>
         </div>
@@ -209,6 +231,27 @@
         </div>
         <div>
             <button class="lng" data-key = "9" type="button" onclick="hideAgeForm('yes')">Yes</button>
+        </div>
+    </div>
+</form>
+<form id="bonusForm">
+    <div class="formHead">
+        <div class="formTitle">
+            <h1 class="lng" data-key = "18">Have the bonus?</h1>
+        </div>
+    </div>
+    <div class="formBottom">
+        <div>
+            <button class="bonus" type="button" onclick="showAgeForm(0)">0%</button>
+        </div>
+        <div>
+            <button class="bonus" type="button" onclick="showAgeForm(0.05)">5%</button>
+        </div>
+        <div>
+            <button class="bonus" type="button" onclick="showAgeForm(0.1)">10%</button>
+        </div>
+        <div>
+            <button class="bonus" type="button" onclick="showAgeForm(0.15)">15%</button>
         </div>
     </div>
 </form>

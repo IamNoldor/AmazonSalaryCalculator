@@ -83,5 +83,20 @@ const LANGUAGES = {
         "eng": "Are you 26 years old or older?",
         "rus": "Вам 26 лет или больше?",
         "pln": "Masz 26 lat lub więcej?",
+    },
+    "18": {
+        "eng": "Have the bonus?",
+        "rus": "Есть премия?",
+        "pln": "Masz premie?",
+    },
+    "19": {
+        "eng": "L4 Sickness",
+        "rus": "L4 Больничный",
+        "pln": "L4 Zwolnienie lekarskie",
+    },
+    "20": {
+        "eng": "Emergency Leave",
+        "rus": "Сила высшая",
+        "pln": "Sila wysza",
     }
 }

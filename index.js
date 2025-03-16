@@ -1,13 +1,31 @@
+const PENSION_CREDIT = 0.0976;
+const DISABULITY_CREDIT = 0.015;
+const DISEASE_CREDIT = 0.0245;
+const PPK_CREDIT = 0.02;
+const SOCIAL_CREDITS = PENSION_CREDIT + DISABULITY_CREDIT + DISEASE_CREDIT;
+const MEDICAL_CREDIT = 0.09;
+
+
+const ALLOWANCE = 41.75;
+
+const PDOF = 350;
+
 const PL_RO = 1.5;
 const PL_NSO = 2.4;
 const PL_SHW = 2;
 const PL_RHW = 1;
 const PL_NSHW = 1.2;
+const PL_SICKNESS = 0.8;
+const PL_EMERGENCY_LEAVE = 0.5;
+
 const BRUTTO = 29.50;
-const YUONG_TAX = 0.21
-const OLD_TAX = 0.32
+
+// const YUONG_TAX = 0.21
+// const OLD_TAX = 0.32
+
 const STEP = -100;
-const PREMIA = 0.15
+
+let bonus = 0;
 
 let transform = [0, 0, 0, 0, 0, 0];
 let extraHoursShort = ["ro", "nso", "shw"]
@@ -22,7 +40,8 @@ function calculate(answer = 0) {
     let shw = 0
     let rhw = document.getElementById("rhw").value;
     let nshw = document.getElementById("nshw").value;
-
+    let sickness = document.getElementById("sickness").value;
+    let emergencyLeave = document.getElementById("emergencyLeave").value;
 
     let existHours = ifExist()
     if (existHours) {
@@ -38,7 +57,7 @@ function calculate(answer = 0) {
             }
         }
     }
-    if (ro + nso + shw + rhw + nshw <= 0) {
+    if (ro + nso + shw + rhw + nshw + sickness + emergencyLeave <= 0) {
         return false;
     } else if (answer === 0) return true
     if (answer !== 0) {
@@ -47,9 +66,12 @@ function calculate(answer = 0) {
                 PL_NSHW * (typeof parseInt(nshw) !== "number" ? 0 : nshw) +
                 PL_RO * (typeof parseInt(ro) !== "number" ? 0 : ro) +
                 PL_NSO * (typeof parseInt(nso) !== "number" ? 0 : nso) +
-                PL_SHW * (typeof parseInt(shw) !== "number" ? 0 : shw))
+                PL_SHW * (typeof parseInt(shw) !== "number" ? 0 : shw) +
+                PL_SICKNESS * (typeof parseInt(sickness) !== "number" ? 0 : sickness) +
+                PL_EMERGENCY_LEAVE * (typeof parseInt(emergencyLeave) !== "number" ? 0 : emergencyLeave))
             * BRUTTO))
-        let salaryNetto = salaryBrutto - (salaryBrutto * (answer === "yes" ? OLD_TAX : YUONG_TAX));
+        let salary = (salaryBrutto + (salaryBrutto * bonus)) - (salaryBrutto * SOCIAL_CREDITS);
+        let salaryNetto = salary - (salary * MEDICAL_CREDIT) - (salary * PPK_CREDIT) - (answer === "yes" ? PDOF : 0);
         let arrayNum = decade(salaryNetto.toFixed(2));
         rotate(arrayNum)
     }
@@ -115,8 +137,10 @@ function hideExtraHours() {
     extraHoursBlock.style.top = "-100%"
 }
 
-function showAgeForm() {
+function showAgeForm(num) {
     if (calculate()) {
+        bonus = num;
+        hideBonusForm()
         let ageForm = document.getElementById("ageForm");
         let salCalc = document.getElementById("salCalc")
         salCalc.style.top = "200%"
@@ -130,6 +154,26 @@ function hideAgeForm(answer) {
     salCalc.style.top = "50%"
     let ageForm = document.getElementById("ageForm");
     ageForm.style.top = "-100%"
+    setTimeout(function () {
+        calculate(answer)
+    }, 400);
+}
+
+function showBonusForm() {
+    if (calculate()) {
+        let bonusForm = document.getElementById("bonusForm");
+        let salCalc = document.getElementById("salCalc")
+        salCalc.style.top = "200%"
+        bonusForm.style.top = "50%"
+        bonusForm.style.left = "50%"
+    }
+}
+
+function hideBonusForm(answer) {
+    let salCalc = document.getElementById("salCalc")
+    salCalc.style.top = "50%"
+    let bonusForm = document.getElementById("bonusForm");
+    bonusForm.style.top = "-100%"
     setTimeout(function () {
         calculate(answer)
     }, 400);

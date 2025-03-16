@@ -324,7 +324,7 @@ body {
     transform: translateY(-900%);
 }
 
-#addForm, #ageForm {
+#addForm, #ageForm, #bonusForm {
     top: -100%;
     position: absolute;
     width: 390px;
@@ -340,7 +340,8 @@ body {
     width: 450px;
 }
 
-#ageForm .formHead {
+#ageForm .formHead, #bonusForm .formHead {
+    border-bottom: 2px solid white;
     justify-content: center;
 }
 
